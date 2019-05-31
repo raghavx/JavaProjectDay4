@@ -9,9 +9,14 @@ public class University {
 	public boolean addDepartment(Department d) {
 		return departments.add(d);
 	}
-
+	
 	public void printDepartment() {
+		departments.parallelStream().forEach(s -> System.out.println(s.getId()));
+	}
+
+	public void resultDeclared() {
+		// this will use all cpu cores
 		departments.parallelStream()
-		.forEach(s -> System.out.println(s.getId()));
+		.forEach(d -> d.resultArrived());
 	}
 }
